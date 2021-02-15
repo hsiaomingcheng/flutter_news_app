@@ -3,6 +3,7 @@
 A example for practice news app.
 
 練習製作新聞APP.
+使用Dio做Http請求.
 
 ## Getting Started
 
