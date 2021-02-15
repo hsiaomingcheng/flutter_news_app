@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:convert'; //翻譯JSON用
 import 'package:dio/dio.dart'; //call api用
 
 import 'news_card.dart';
@@ -16,7 +15,6 @@ class _BodyComponentState extends State<BodyComponent> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this._getNewsData();
   }
