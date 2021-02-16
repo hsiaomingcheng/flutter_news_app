@@ -3,7 +3,8 @@
 A example for practice news app.
 
 練習製作新聞APP.
-使用Dio做Http請求.
+使用[Dio](https://pub.dev/packages/dio)做Http請求.
+使用[webview_flutter](https://pub.dev/packages/webview_flutter)做webView顯示新聞內容.
 
 ## Getting Started
 

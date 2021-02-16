@@ -1,5 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/components/left_drawer_item.dart';
 import 'package:flutter_news_app/screens/home/components/body.dart';
+
+List<Map> leftDrawerItemList = [
+  {
+    'id': 0,
+    'icon': Icons.business,
+    'text': 'business',
+    'type': 'business',
+  },
+  {
+    'id': 1,
+    'icon': Icons.toys,
+    'text': 'entertainment',
+    'type': 'entertainment',
+  },
+  {
+    'id': 2,
+    'icon': Icons.healing,
+    'text': 'health',
+    'type': 'health',
+  },
+  {
+    'id': 3,
+    'icon': Icons.science,
+    'text': 'science',
+    'type': 'science',
+  },
+  {
+    'id': 4,
+    'icon': Icons.sports,
+    'text': 'sports',
+    'type': 'sports',
+  },
+  {
+    'id': 5,
+    'icon': Icons.library_add,
+    'text': 'technology',
+    'type': 'technology',
+  },
+];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -14,37 +54,23 @@ class HomeScreen extends StatelessWidget {
       drawer: Drawer(
         child: Column(
           children: [
-            SizedBox(height: 25,),
-            ListTile(
-              leading: Icon(Icons.business, color: Colors.blue,),
-              title: Text('business', style: TextStyle(color: Colors.blue,),),
+            SizedBox(
+              height: 25,
             ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.toys),
-              title: Text('entertaiment'),
+            if (leftDrawerItemList.length > 0) ...List.generate(
+              leftDrawerItemList.length,
+              (index) => Column(
+                children: [
+                  LeftDrawerItem(
+                    type: leftDrawerItemList[index]['type'],
+                    itemId: leftDrawerItemList[index]['id'],
+                    icon: leftDrawerItemList[index]['icon'],
+                    text: leftDrawerItemList[index]['text'],
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.healing),
-              title: Text('health'),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.science),
-              title: Text('science'),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.sports),
-              title: Text('sports'),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.library_add),
-              title: Text('technology'),
-            ),
-            Divider(),
           ],
         ),
       ),

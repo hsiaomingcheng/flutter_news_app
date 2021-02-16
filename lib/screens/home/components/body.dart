@@ -19,6 +19,7 @@ class _BodyComponentState extends State<BodyComponent> {
     this._getNewsData();
   }
 
+  //取得新聞資訊
   _getNewsData() async {
     var apiUrl =
         'http://newsapi.org/v2/top-headlines?country=tw&category=business&apiKey=1d2378b6c5aa41709df3dbbe17bd23a3';
@@ -47,6 +48,7 @@ class _BodyComponentState extends State<BodyComponent> {
                       image: this._list[index]['urlToImage'] == null ? '' : this._list[index]['urlToImage'],
                       title: this._list[index]['title'] == null ? '' : this._list[index]['title'],
                       sourceName: this._list[index]['source']['name'] == null ? '' : this._list[index]['source']['name'],
+                      url: this._list[index]['url'] == null ? '' : this._list[index]['url'],
                     ),
                     Divider(
                       color: Colors.black,

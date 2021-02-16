@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/screens/home/home_screen.dart';
+import './routes/Routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '新聞APP', //只在android跟web有效
       home: HomeScreen(),
+      onGenerateRoute: onGenerateRoute, //命名路由傳值
     );
   }
 }
