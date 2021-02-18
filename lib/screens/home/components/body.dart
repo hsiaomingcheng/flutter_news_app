@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart'; //call api用
+import 'package:flutter_news_app/main.dart';
+import 'package:provider/provider.dart';
 
 import 'news_card.dart';
 
@@ -11,24 +12,9 @@ class BodyComponent extends StatefulWidget {
 }
 
 class _BodyComponentState extends State<BodyComponent> {
-  List _list = [];
-
   @override
   void initState() {
     super.initState();
-    this._getNewsData();
-  }
-
-  //取得新聞資訊
-  _getNewsData() async {
-    var apiUrl =
-        'http://newsapi.org/v2/top-headlines?country=tw&category=business&apiKey=1d2378b6c5aa41709df3dbbe17bd23a3';
-
-    var result = await Dio().get(apiUrl);
-
-    setState(() {
-      this._list = result.data['articles'];
-    });
   }
 
   @override
@@ -38,17 +24,38 @@ class _BodyComponentState extends State<BodyComponent> {
         padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         child: Column(
           children: [
+            Text(Provider.of<NewsState>(context).newsCategory),
             //這裡需注意，必須寫一個當資料還沒取到時的處理，否則會報錯
-            if (this._list.length > 0)
+            if (Provider.of<NewsState>(context).newCardList.length > 0)
               ...List.generate(
-                this._list.length,
+                Provider.of<NewsState>(context).newCardList.length,
                 (index) => Column(
                   children: [
                     NewsCard(
-                      image: this._list[index]['urlToImage'] == null ? '' : this._list[index]['urlToImage'],
-                      title: this._list[index]['title'] == null ? '' : this._list[index]['title'],
-                      sourceName: this._list[index]['source']['name'] == null ? '' : this._list[index]['source']['name'],
-                      url: this._list[index]['url'] == null ? '' : this._list[index]['url'],
+                      image: Provider.of<NewsState>(context)
+                                  .newCardList[index]['urlToImage'] ==
+                              null
+                          ? ''
+                          : Provider.of<NewsState>(context)
+                              .newCardList[index]['urlToImage'],
+                      title: Provider.of<NewsState>(context)
+                                  .newCardList[index]['title'] ==
+                              null
+                          ? ''
+                          : Provider.of<NewsState>(context)
+                              .newCardList[index]['title'],
+                      sourceName: Provider.of<NewsState>(context)
+                                  .newCardList[index]['source']['name'] ==
+                              null
+                          ? ''
+                          : Provider.of<NewsState>(context)
+                              .newCardList[index]['source']['name'],
+                      url: Provider.of<NewsState>(context)
+                                  .newCardList[index]['url'] ==
+                              null
+                          ? ''
+                          : Provider.of<NewsState>(context)
+                              .newCardList[index]['url'],
                     ),
                     Divider(
                       color: Colors.black,

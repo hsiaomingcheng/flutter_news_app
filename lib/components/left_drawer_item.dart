@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart'; //call api用
+import 'package:flutter_news_app/main.dart';
+import 'package:provider/provider.dart';
 
 class LeftDrawerItem extends StatefulWidget {
   final IconData icon;
@@ -29,21 +30,6 @@ class _LeftDrawerItemState extends State<LeftDrawerItem> {
     _setItemColor();
   }
 
-  //取得新聞資訊
-  _getNewsData(category) async {
-    var apiUrl =
-        'http://newsapi.org/v2/top-headlines?country=tw&category=$category&apiKey=1d2378b6c5aa41709df3dbbe17bd23a3';
-
-    var result = await Dio().get(apiUrl);
-
-    setState(() {
-      //目前可以透過點擊不同的item取得相對應的新聞類別
-      //問題在於，如何透過狀態的管理使得同層的body可以取得新的新聞data，從而使body的newsCard更新
-      //最後再把_getNewsData抽成共用方法，就不用在body跟leftDrawer都寫一次同樣的方法
-      print(result.data['articles']);
-    });
-  }
-
   //統一管理item顏色
   _setItemColor() {
     itemColor = widget.isActive ? Colors.blue : Colors.black;
@@ -63,8 +49,8 @@ class _LeftDrawerItemState extends State<LeftDrawerItem> {
         ),
       ),
       onTap: () {
-        _getNewsData(widget.type);
-        print(widget.itemId);
+        Provider.of<NewsState>(context, listen: false).getNewsData(widget.type);
+        Navigator.of(context).pop(); //隱藏側邊欄
       },
     );
   }
