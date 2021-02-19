@@ -6,37 +6,37 @@ List<Map> leftDrawerItemList = [
   {
     'id': 0,
     'icon': Icons.business,
-    'text': 'business',
+    'text': '商業',
     'type': 'business',
   },
   {
     'id': 1,
     'icon': Icons.toys,
-    'text': 'entertainment',
+    'text': '娛樂',
     'type': 'entertainment',
   },
   {
     'id': 2,
     'icon': Icons.healing,
-    'text': 'health',
+    'text': '健康',
     'type': 'health',
   },
   {
     'id': 3,
     'icon': Icons.science,
-    'text': 'science',
+    'text': '科學',
     'type': 'science',
   },
   {
     'id': 4,
     'icon': Icons.sports,
-    'text': 'sports',
+    'text': '運動',
     'type': 'sports',
   },
   {
     'id': 5,
     'icon': Icons.library_add,
-    'text': 'technology',
+    'text': '科技',
     'type': 'technology',
   },
 ];

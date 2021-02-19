@@ -49,7 +49,7 @@ class _LeftDrawerItemState extends State<LeftDrawerItem> {
         ),
       ),
       onTap: () {
-        Provider.of<NewsState>(context, listen: false).getNewsData(widget.type);
+        Provider.of<NewsState>(context, listen: false).getNewsData(widget.type, widget.text);
         Navigator.of(context).pop(); //隱藏側邊欄
       },
     );

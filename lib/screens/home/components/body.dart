@@ -13,8 +13,12 @@ class BodyComponent extends StatefulWidget {
 
 class _BodyComponentState extends State<BodyComponent> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    if (Provider.of<NewsState>(context).newCardList.length == 0) {
+      Provider.of<NewsState>(context, listen: false).getNewsData('business', '商業');
+    }
+
+    super.didChangeDependencies();
   }
 
   @override
@@ -24,45 +28,44 @@ class _BodyComponentState extends State<BodyComponent> {
         padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         child: Column(
           children: [
-            Text(Provider.of<NewsState>(context).newsCategory),
+            if (Provider.of<NewsState>(context).newCardList.length > 0) Text(Provider.of<NewsState>(context).newsCategory),
             //這裡需注意，必須寫一個當資料還沒取到時的處理，否則會報錯
             if (Provider.of<NewsState>(context).newCardList.length > 0)
               ...List.generate(
-                Provider.of<NewsState>(context).newCardList.length,
-                (index) => Column(
-                  children: [
-                    NewsCard(
-                      image: Provider.of<NewsState>(context)
-                                  .newCardList[index]['urlToImage'] ==
-                              null
-                          ? ''
-                          : Provider.of<NewsState>(context)
-                              .newCardList[index]['urlToImage'],
-                      title: Provider.of<NewsState>(context)
-                                  .newCardList[index]['title'] ==
-                              null
-                          ? ''
-                          : Provider.of<NewsState>(context)
-                              .newCardList[index]['title'],
-                      sourceName: Provider.of<NewsState>(context)
-                                  .newCardList[index]['source']['name'] ==
-                              null
-                          ? ''
-                          : Provider.of<NewsState>(context)
-                              .newCardList[index]['source']['name'],
-                      url: Provider.of<NewsState>(context)
-                                  .newCardList[index]['url'] ==
-                              null
-                          ? ''
-                          : Provider.of<NewsState>(context)
-                              .newCardList[index]['url'],
-                    ),
-                    Divider(
-                      color: Colors.black,
-                    )
-                  ],
-                )
-              ),
+                  Provider.of<NewsState>(context).newCardList.length,
+                  (index) => Column(
+                        children: [
+                          NewsCard(
+                            image: Provider.of<NewsState>(context)
+                                        .newCardList[index]['urlToImage'] ==
+                                    null
+                                ? ''
+                                : Provider.of<NewsState>(context)
+                                    .newCardList[index]['urlToImage'],
+                            title: Provider.of<NewsState>(context)
+                                        .newCardList[index]['title'] ==
+                                    null
+                                ? ''
+                                : Provider.of<NewsState>(context)
+                                    .newCardList[index]['title'],
+                            sourceName: Provider.of<NewsState>(context)
+                                        .newCardList[index]['source']['name'] ==
+                                    null
+                                ? ''
+                                : Provider.of<NewsState>(context)
+                                    .newCardList[index]['source']['name'],
+                            url: Provider.of<NewsState>(context)
+                                        .newCardList[index]['url'] ==
+                                    null
+                                ? ''
+                                : Provider.of<NewsState>(context)
+                                    .newCardList[index]['url'],
+                          ),
+                          Divider(
+                            color: Colors.black,
+                          )
+                        ],
+                      )),
           ],
         ),
       ),

@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
 }
 
 class NewsState extends ChangeNotifier {
-  String newsCategory = 'business';
+  String newsCategory = '商業';
   List newCardList = [];
 
   //取得新聞資訊
-  void getNewsData(String category) async {
+  void getNewsData(String category, String text) async {
     var apiUrl =
         'http://newsapi.org/v2/top-headlines?country=tw&category=$category&apiKey=1d2378b6c5aa41709df3dbbe17bd23a3';
 
@@ -35,10 +35,7 @@ class NewsState extends ChangeNotifier {
 
     newCardList = result.data['articles'];
 
-    newsCategory = category;
-
-    print(apiUrl);
-    print(newCardList);
+    newsCategory = text;
 
     notifyListeners();
   }
