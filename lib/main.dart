@@ -27,7 +27,7 @@ class NewsState extends ChangeNotifier {
   List newCardList = [];
 
   //取得新聞資訊
-  void getNewsData(String category, String text) async {
+  void getNewsData({String category = 'business', String text = '商業'}) async {
     var apiUrl =
         'http://newsapi.org/v2/top-headlines?country=tw&category=$category&apiKey=1d2378b6c5aa41709df3dbbe17bd23a3';
 

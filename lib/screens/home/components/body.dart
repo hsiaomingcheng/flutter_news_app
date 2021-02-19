@@ -15,7 +15,7 @@ class _BodyComponentState extends State<BodyComponent> {
   @override
   void didChangeDependencies() {
     if (Provider.of<NewsState>(context).newCardList.length == 0) {
-      Provider.of<NewsState>(context, listen: false).getNewsData('business', '商業');
+      Provider.of<NewsState>(context, listen: false).getNewsData();
     }
 
     super.didChangeDependencies();
