@@ -7,8 +7,7 @@ A example for practice news app.
 使用[webview_flutter](https://pub.dev/packages/webview_flutter)做webView顯示新聞內容.   
 使用[provider](https://pub.dev/packages/provider)做狀態管理，目的為根據左側邊欄選的新聞類別更新新聞卡片內容.
 
-待解決問題：    
-如何在home_screen載入的時候預設使用business的new data做展示，目前在initState呼叫provider裡的方法會報錯.
+展示影片: [https://youtu.be/5K1GHjU2yTg](https://youtu.be/5K1GHjU2yTg)
 
 ## Getting Started
 
