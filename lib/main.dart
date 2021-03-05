@@ -26,6 +26,7 @@ class NewsState extends ChangeNotifier {
   String newsCategory = '';
   String newsCategoryText = '';
   List newCardList = [];
+  ScrollController controller = ScrollController();
 
   //取得新聞資訊
   void getNewsData({String category = 'business', String text = '商業'}) async {

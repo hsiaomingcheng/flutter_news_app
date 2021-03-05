@@ -53,6 +53,12 @@ class _LeftDrawerItemState extends State<LeftDrawerItem> {
           Provider.of<NewsState>(context, listen: false)
               .getNewsData(category: widget.type, text: widget.text);
           Navigator.of(context).pop(); //隱藏側邊欄
+
+          Provider.of<NewsState>(context, listen: false).controller.animateTo(
+                0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
           // _setItemColor();
         },
       ),

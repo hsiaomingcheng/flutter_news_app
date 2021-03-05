@@ -24,6 +24,7 @@ class _BodyComponentState extends State<BodyComponent> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: Provider.of<NewsState>(context).controller,
       child: Container(
         padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         child: Column(
