@@ -9,6 +9,10 @@ A example for practice news app.
 
 展示影片: [https://youtu.be/5K1GHjU2yTg](https://youtu.be/5K1GHjU2yTg)
 
+2021/3/6
+ 1. 新增左邊抽屜active樣式
+ 2. 新增當切換新聞類別時，新聞列表自動回到最上功能
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
