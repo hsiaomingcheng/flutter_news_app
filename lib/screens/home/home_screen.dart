@@ -57,20 +57,23 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            if (leftDrawerItemList.length > 0) ...List.generate(
-              leftDrawerItemList.length,
-              (index) => Column(
-                children: [
-                  LeftDrawerItem(
-                    type: leftDrawerItemList[index]['type'],
-                    itemId: leftDrawerItemList[index]['id'],
-                    icon: leftDrawerItemList[index]['icon'],
-                    text: leftDrawerItemList[index]['text'],
-                  ),
-                  Divider(),
-                ],
+            if (leftDrawerItemList.length > 0)
+              ...List.generate(
+                leftDrawerItemList.length,
+                (index) => Column(
+                  children: [
+                    LeftDrawerItem(
+                      type: leftDrawerItemList[index]['type'],
+                      itemId: leftDrawerItemList[index]['id'],
+                      icon: leftDrawerItemList[index]['icon'],
+                      text: leftDrawerItemList[index]['text'],
+                    ),
+                    Divider(
+                      height: 1.0,
+                    ),
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),

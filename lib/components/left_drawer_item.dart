@@ -24,34 +24,38 @@ class LeftDrawerItem extends StatefulWidget {
 class _LeftDrawerItemState extends State<LeftDrawerItem> {
   var itemColor;
 
-  @override
-  void initState() {
-    super.initState();
-    _setItemColor();
-  }
-
   //統一管理item顏色
   _setItemColor() {
-    itemColor = widget.isActive ? Colors.blue : Colors.black;
+    return Provider.of<NewsState>(context).newsCategory == widget.type
+        ? Colors.white
+        : Colors.black;
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(
-        widget.icon,
-        color: this.itemColor,
-      ),
-      title: Text(
-        widget.text,
-        style: TextStyle(
-          color: this.itemColor,
+    return Container(
+      color: Provider.of<NewsState>(context).newsCategory == widget.type
+          ? Colors.blue
+          : Colors.white,
+      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+      child: ListTile(
+        leading: Icon(
+          widget.icon,
+          color: this._setItemColor(),
         ),
+        title: Text(
+          widget.text,
+          style: TextStyle(
+            color: this._setItemColor(),
+          ),
+        ),
+        onTap: () {
+          Provider.of<NewsState>(context, listen: false)
+              .getNewsData(category: widget.type, text: widget.text);
+          Navigator.of(context).pop(); //隱藏側邊欄
+          // _setItemColor();
+        },
       ),
-      onTap: () {
-        Provider.of<NewsState>(context, listen: false).getNewsData(category: widget.type, text: widget.text);
-        Navigator.of(context).pop(); //隱藏側邊欄
-      },
     );
   }
 }

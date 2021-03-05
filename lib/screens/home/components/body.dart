@@ -28,7 +28,8 @@ class _BodyComponentState extends State<BodyComponent> {
         padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
         child: Column(
           children: [
-            if (Provider.of<NewsState>(context).newCardList.length > 0) Text(Provider.of<NewsState>(context).newsCategory),
+            if (Provider.of<NewsState>(context).newCardList.length > 0)
+              Text(Provider.of<NewsState>(context).newsCategoryText),
             //這裡需注意，必須寫一個當資料還沒取到時的處理，否則會報錯
             if (Provider.of<NewsState>(context).newCardList.length > 0)
               ...List.generate(

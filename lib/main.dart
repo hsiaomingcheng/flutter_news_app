@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class NewsState extends ChangeNotifier {
-  String newsCategory = '商業';
+  String newsCategory = '';
+  String newsCategoryText = '';
   List newCardList = [];
 
   //取得新聞資訊
@@ -35,7 +36,9 @@ class NewsState extends ChangeNotifier {
 
     newCardList = result.data['articles'];
 
-    newsCategory = text;
+    newsCategory = category;
+
+    newsCategoryText = text;
 
     notifyListeners();
   }
