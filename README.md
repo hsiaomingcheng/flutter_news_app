@@ -7,11 +7,15 @@ A example for practice news app.
 使用[webview_flutter](https://pub.dev/packages/webview_flutter)做webView顯示新聞內容.   
 使用[provider](https://pub.dev/packages/provider)做狀態管理，目的為根據左側邊欄選的新聞類別更新新聞卡片內容.
 
-展示影片: [https://youtu.be/5K1GHjU2yTg](https://youtu.be/5K1GHjU2yTg)
+展示影片: [https://youtu.be/96SKXL3-BOQ](https://youtu.be/96SKXL3-BOQ)
 
 2021/3/6
  1. 新增左邊抽屜active樣式
  2. 新增當切換新聞類別時，新聞列表自動回到最上功能
+ 
+2021/3/10
+ 1. add Icons
+ 2. change http to https
 
 ## Getting Started
 
