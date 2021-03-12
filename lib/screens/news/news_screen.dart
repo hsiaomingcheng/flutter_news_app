@@ -43,6 +43,7 @@ class WebViewComponentState extends State<WebViewComponent> {
   Widget build(BuildContext context) {
     return WebView(
       initialUrl: widget.webViewUrl,
+      javascriptMode: JavascriptMode.unrestricted,
     );
   }
 }
